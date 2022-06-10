@@ -1,2 +1,5 @@
-# ignore cache
+# ignora cache
 __pycache__
+
+# ignora arquivo gerado pelo algoritmo
+.txt
