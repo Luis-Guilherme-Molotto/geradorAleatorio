@@ -23,7 +23,8 @@ def testar_geracao() -> None:
 
 
 def main():
-    gerador = GeradorAleatorio(tamanho=0)
+    gerador_1 = GeradorAleatorio(tamanho=10)
+    print(gerador_1.exec())
 
     # testar performance
     # testar_geracao()
