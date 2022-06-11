@@ -32,7 +32,7 @@ class TesteUniformidade:
                     fo[index] += 1
         return fo
 
-    def _cacl_pi(self, fo: List[float]):
+    def _calc_pi(self, fo: List[float]):
         len_numeros = len(self._numeros)
         return [fo[i] / len_numeros for i in range(self._classes)]
 
@@ -54,7 +54,7 @@ class TesteUniformidade:
         li = self._calc_li()
         ls = self._calc_ls()
         fo = self._calc_fo(li, ls)
-        pi = self._cacl_pi(fo)
+        pi = self._calc_pi(fo)
         gx = self._calc_gx(pi)
         fx = ls
 
