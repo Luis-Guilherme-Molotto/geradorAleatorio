@@ -23,25 +23,25 @@ def cronometrar_tempo() -> None:
 
 def main():
     # testar performance
-    # cronometrar_tempo()
+    cronometrar_tempo()
 
     # gerador 1
     # gerador_1 = GeradorAleatorio(multiplicador=16807, modulo=((2 ** 31) - 1))
 
     # gerador personalizado
     gerador_personalizado = GeradorAleatorio(
-        multiplicador=8404997, modulo=((2 ** 35) - 1)
+        multiplicador=8404997, modulo=((2 ** 61) - 1)
     )
 
     gerenciador_arquivo = GerenciadorArquivo("GERALEO.txt")
 
-    numeros_aleatorios = gerador_personalizado.exec(tamanho=10)
+    numeros_aleatorios = gerador_personalizado.exec(tamanho=60000000)
 
     gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
 
     numeros_salvos = gerenciador_arquivo.ler_numeros()
 
-    teste_uniformidade = TesteUniformidade(numeros_salvos, classes=10)
+    teste_uniformidade = TesteUniformidade(numeros_salvos, classes=20)
     teste_uniformidade.exec()
 
 

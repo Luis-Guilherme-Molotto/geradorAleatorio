@@ -65,3 +65,5 @@ class TesteUniformidade(TesteKS):
         ks5 = 1.36 / sqrt(len(self._numeros))
 
         print("Aceita H0" if ks < ks5 else "Rejeita H0")
+        print(ks)
+        print(ks5)
