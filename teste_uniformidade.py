@@ -1,10 +1,12 @@
 from math import sqrt
 from typing import List
 
+from teste_ks import TesteKS
+
 # Teste de uniformidade utilizando Kolmogorov-Smirnov
 
 
-class TesteUniformidade:
+class TesteUniformidade(TesteKS):
     def __init__(
         self, numeros: List[float], classes: int = 20, precisao: int = 12
     ) -> None:
