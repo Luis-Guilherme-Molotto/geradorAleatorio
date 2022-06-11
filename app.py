@@ -1,8 +1,8 @@
 from timeit import timeit
-from os.path import exists as verificar_existe_arquivo
-from typing import List
 
 from gerador_aleatorio import GeradorAleatorio
+from teste_uniformidade import TesteUniformidade
+from gerenciador_arquivo import GerenciadorArquivo
 
 
 def gerar_numeros_aleatorios():
@@ -21,22 +21,6 @@ def cronometrar_tempo() -> None:
     print("Tempo de execucao: " + str(tempo))
 
 
-def escrever_arquivo(nome: str, text: str):
-    try:
-        existe_arquivo = verificar_existe_arquivo(nome)
-        arquivo = open(nome, "w" if existe_arquivo else "x")
-        arquivo.write(text)
-        arquivo.close()
-    except:
-        print("Nao foi possivel escrever no arquivo")
-
-
-def stringify_numeros(vetor: List[float], separador: str):
-    string = "".join(["%.12f" % numero + separador for numero in vetor])
-
-    return string
-
-
 def main():
     # testar performance
     # cronometrar_tempo()
@@ -49,13 +33,16 @@ def main():
         multiplicador=8404997, modulo=((2 ** 35) - 1)
     )
 
-    numeros_aleatorios = gerador_personalizado.exec(tamanho=6 * (10 ** 7))
+    gerenciador_arquivo = GerenciadorArquivo("GERALEO.txt")
 
-    print("transformando numeros em string...")
-    texto_arquivo = stringify_numeros(numeros_aleatorios, separador="\n")
+    numeros_aleatorios = gerador_personalizado.exec(tamanho=10)
 
-    print("escrevendo no arquivo...")
-    escrever_arquivo("GERALEO.txt", texto_arquivo)
+    gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
+
+    numeros_salvos = gerenciador_arquivo.ler_numeros()
+
+    teste_uniformidade = TesteUniformidade(numeros_salvos, classes=10)
+    teste_uniformidade.exec()
 
 
 if __name__ == "__main__":
