@@ -24,7 +24,7 @@ class GeradorAleatorio:
     def exec(self, tamanho: int = 20):
         numero_anterior = self._semente
         valores_aleatorios: list[float] = []
-        for i in range(tamanho - 1):
+        for i in range(tamanho):
             numero_anterior = self.__calc_numero_aleatorio(numero_anterior)
             valores_aleatorios.append(numero_anterior / self._modulo)
 

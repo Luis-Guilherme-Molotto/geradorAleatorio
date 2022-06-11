@@ -2,4 +2,4 @@
 __pycache__
 
 # ignora arquivo gerado pelo algoritmo
-.txt
+*.txt
