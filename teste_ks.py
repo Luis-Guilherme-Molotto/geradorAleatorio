@@ -3,9 +3,6 @@ from typing import List
 
 
 class TesteKS(ABC):
-    def _calc_normalizador(self):
-        return 10 ** self._precisao
-
     @abstractmethod
     def _calc_fo(self, li: List[float], ls: List[float]) -> List[float]:
         pass
