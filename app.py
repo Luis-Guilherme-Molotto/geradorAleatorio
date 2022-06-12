@@ -1,8 +1,9 @@
 from timeit import timeit
 
 from gerador_aleatorio import GeradorAleatorio
-from teste_uniformidade import TesteUniformidade
 from gerenciador_arquivo import GerenciadorArquivo
+from teste_uniformidade import TesteUniformidade
+from teste_corrida import TesteCorrida
 
 
 def gerar_numeros_aleatorios():
@@ -23,7 +24,7 @@ def cronometrar_tempo() -> None:
 
 def main():
     # testar performance
-    cronometrar_tempo()
+    # cronometrar_tempo()
 
     # gerador 1
     # gerador_1 = GeradorAleatorio(multiplicador=16807, modulo=((2 ** 31) - 1))
@@ -32,17 +33,19 @@ def main():
     gerador_personalizado = GeradorAleatorio(
         multiplicador=8404997, modulo=((2 ** 61) - 1)
     )
-
     gerenciador_arquivo = GerenciadorArquivo("GERALEO.txt")
 
-    numeros_aleatorios = gerador_personalizado.exec(tamanho=60000000)
-
+    numeros_aleatorios = gerador_personalizado.exec(tamanho=5000)
     gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
-
     numeros_salvos = gerenciador_arquivo.ler_numeros()
 
-    teste_uniformidade = TesteUniformidade(numeros_salvos, classes=20)
-    teste_uniformidade.exec()
+    print("calculando teste de uniformidade...")
+    teste_uniformidade = TesteUniformidade(classes=20)
+    teste_uniformidade.exec(numeros_salvos)
+
+    print("\ncalculando teste de corrida...")
+    teste_corrida = TesteCorrida()
+    teste_corrida.exec(numeros_salvos)
 
 
 if __name__ == "__main__":
