@@ -14,9 +14,6 @@ class TesteUniformidade(TesteKS):
         self._classes = classes
         self._precisao = precisao
 
-    def _calc_normalizador(self):
-        return 10 ** self._precisao
-
     def _calc_li(self):
         return [i / self._classes for i in range(self._classes)]
 
@@ -37,18 +34,18 @@ class TesteUniformidade(TesteKS):
         return [fo[i] / len_numeros for i in range(self._classes)]
 
     def _calc_gx(self, pi: List[float]):
-        norm = self._calc_normalizador()
         gx = [pi[0]]
-
         len_pi = len(pi)
+
         for i in range(len_pi - 1):
-            gx.append((norm * gx[i] + norm * pi[i + 1]) / norm)
+            gx.append(round((gx[i] + pi[i + 1]), self._precisao))
 
         return gx
 
     def _calc_teste(self, fx: List[float], gx: List[float]):
-        norm = self._calc_normalizador()
-        return [abs((norm * fx[i] - norm * gx[i]) / norm) for i in range(self._classes)]
+        return [
+            abs(round((fx[i] - gx[i]), self._precisao)) for i in range(self._classes)
+        ]
 
     def exec(self):
         li = self._calc_li()
