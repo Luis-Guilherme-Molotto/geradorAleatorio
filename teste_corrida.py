@@ -6,7 +6,6 @@ from teste_ks import TesteKS
 class TesteCorrida(TesteKS):
     def __init__(self, precisao=12) -> None:
         super().__init__(precisao=precisao)
-        pass
 
     def _calc_fo(self, corrida: List[int], classes: List[int]):
         fo = [0 for _cls in classes]
@@ -62,7 +61,7 @@ class TesteCorrida(TesteKS):
     def _calc_corrida(self, numeros: List[float], tipo: str):
         if tipo == "asc":
             return self._contar_corrida_asc(numeros)
-        
+
         if tipo == "desc":
             return self._contar_corrida_desc(numeros)
 
