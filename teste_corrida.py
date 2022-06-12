@@ -59,8 +59,17 @@ class TesteCorrida(TesteKS):
         corrida_max = max(corrida)
         return [num + 1 for num in range(corrida_max)]
 
-    def exec(self, numeros: List[float]):
-        corrida = self._contar_corrida_asc(numeros)
+    def _calc_corrida(self, numeros: List[float], tipo: str):
+        if tipo == "asc":
+            return self._contar_corrida_asc(numeros)
+        
+        if tipo == "desc":
+            return self._contar_corrida_desc(numeros)
+
+        raise Exception("tipo de corrrida invalida")
+
+    def exec(self, numeros: List[float], tipo: str = "asc"):
+        corrida = self._calc_corrida(numeros, tipo)
         classes = self._calc_classes(corrida)
         fo = self._calc_fo(corrida, classes)
         pi = self._calc_pi(fo)

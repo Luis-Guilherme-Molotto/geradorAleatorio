@@ -45,7 +45,7 @@ def main():
 
     print("\ncalculando teste de corrida...")
     teste_corrida = TesteCorrida()
-    teste_corrida.exec(numeros_salvos)
+    teste_corrida.exec(numeros_salvos, tipo="asc")
 
 
 if __name__ == "__main__":
