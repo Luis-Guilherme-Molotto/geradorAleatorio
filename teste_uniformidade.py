@@ -32,9 +32,8 @@ class TesteUniformidade(TesteKS):
 
     def _calc_gx(self, pi: List[float]):
         gx = [pi[0]]
-        len_pi = len(pi)
 
-        for i in range(len_pi - 1):
+        for i in range(len(pi) - 1):
             gx.append(round((gx[i] + pi[i + 1]), self._precisao))
 
         return gx
