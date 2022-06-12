@@ -28,9 +28,7 @@ class TesteUniformidade(TesteKS):
 
         for numero in self._numeros:
             for index in range(self._classes):
-                limite_inferior = li[index]
-                limite_superior = ls[index]
-                if numero > limite_inferior and numero <= limite_superior:
+                if numero > li[index] and numero <= ls[index]:
                     fo[index] += 1
         return fo
 
