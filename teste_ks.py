@@ -11,7 +11,7 @@ class TesteKS(ABC):
     def _calc_fo(self, li: List[float], ls: List[float]) -> List[float]:
         pass
 
-    def _soma_acumulada(self, lista: List[float] | List[int]):
+    def _soma_acumulada(self, lista: List[float]):
         soma_acc = [lista[0]]
 
         for i in range(len(lista) - 1):
