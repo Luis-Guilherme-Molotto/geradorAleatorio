@@ -7,10 +7,7 @@ from teste_ks import TesteKS
 
 
 class TesteUniformidade(TesteKS):
-    def __init__(
-        self, numeros: List[float], classes: int = 20, precisao: int = 12
-    ) -> None:
-        self._numeros = numeros
+    def __init__(self, classes: int = 20, precisao: int = 12) -> None:
         self._classes = classes
         self._precisao = precisao
 
@@ -20,17 +17,17 @@ class TesteUniformidade(TesteKS):
     def _calc_ls(self):
         return [(i + 1) / self._classes for i in range(self._classes)]
 
-    def _calc_fo(self, li: List[float], ls: List[float]):
+    def _calc_fo(self, numeros: List[float], li: List[float], ls: List[float]):
         fo = [0 for i in range(self._classes)]
 
-        for numero in self._numeros:
+        for numero in numeros:
             for index in range(self._classes):
                 if numero > li[index] and numero <= ls[index]:
                     fo[index] += 1
         return fo
 
-    def _calc_pi(self, fo: List[float]):
-        len_numeros = len(self._numeros)
+    def _calc_pi(self, numeros: List[float], fo: List[float]):
+        len_numeros = len(numeros)
         return [fo[i] / len_numeros for i in range(self._classes)]
 
     def _calc_gx(self, pi: List[float]):
@@ -47,17 +44,17 @@ class TesteUniformidade(TesteKS):
             abs(round((fx[i] - gx[i]), self._precisao)) for i in range(self._classes)
         ]
 
-    def exec(self):
+    def exec(self, numeros: List[float]):
         li = self._calc_li()
         ls = self._calc_ls()
-        fo = self._calc_fo(li, ls)
-        pi = self._calc_pi(fo)
+        fo = self._calc_fo(numeros, li, ls)
+        pi = self._calc_pi(numeros, fo)
         gx = self._calc_gx(pi)
         fx = ls
 
         teste = self._calc_teste(fx, gx)
         ks = max(teste)
-        ks5 = 1.36 / sqrt(len(self._numeros))
+        ks5 = 1.36 / sqrt(len(numeros))
 
         print("Aceita H0" if ks < ks5 else "Rejeita H0")
         print(ks)
