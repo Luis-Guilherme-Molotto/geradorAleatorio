@@ -4,6 +4,7 @@ from gerador_aleatorio import GeradorAleatorio
 from gerenciador_arquivo import GerenciadorArquivo
 from teste_uniformidade import TesteUniformidade
 from teste_corrida import TesteCorrida
+from teste_permutacoes import TestePermutacoes
 
 
 def gerar_numeros_aleatorios():
@@ -35,7 +36,7 @@ def main():
     )
     gerenciador_arquivo = GerenciadorArquivo("GERALEO.txt")
 
-    numeros_aleatorios = gerador_personalizado.exec(tamanho=5000)
+    numeros_aleatorios = gerador_personalizado.exec(tamanho=60000000)
     gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
     numeros_salvos = gerenciador_arquivo.ler_numeros()
 
@@ -46,6 +47,14 @@ def main():
     print("\ncalculando teste de corrida...")
     teste_corrida = TesteCorrida()
     teste_corrida.exec(numeros_salvos, tipo="asc")
+
+    print("\ncalculando teste de intervalo...")
+    #teste_intervalo = TesteIntervalo()
+    #teste_intervalo.exec(numeros_salvos)
+
+    print("\ncalculando teste de permutações...")
+    teste_permutacoes = TestePermutacoes()
+    teste_permutacoes.exec(numeros_salvos)
 
 
 if __name__ == "__main__":

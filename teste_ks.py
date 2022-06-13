@@ -38,3 +38,6 @@ class TesteKS(ABC):
 
     def _calc_ks5(self, numeros: List[float]) -> float:
         return 1.36 / sqrt(len(numeros))
+
+    def _calc_ks5_permutacao(self, numeros: List[float]) -> float:
+        return 1.36 / sqrt(len(numeros)/3)
