@@ -41,3 +41,6 @@ class TesteKS(ABC):
 
     def _calc_ks5_permutacao(self, numeros: List[float]) -> float:
         return 1.36 / sqrt(len(numeros)/3)
+    
+    def _calc_ks5_intervalo(self, numeros: List[float]) -> float:
+        return 1.36 / sqrt(sum(numeros))

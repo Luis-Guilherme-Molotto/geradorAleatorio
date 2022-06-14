@@ -5,6 +5,7 @@ from gerenciador_arquivo import GerenciadorArquivo
 from teste_uniformidade import TesteUniformidade
 from teste_corrida import TesteCorrida
 from teste_permutacoes import TestePermutacoes
+from teste_intervalo import TesteIntervalo
 
 
 def gerar_numeros_aleatorios():
@@ -40,21 +41,21 @@ def main():
     gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
     numeros_salvos = gerenciador_arquivo.ler_numeros()
 
-    print("calculando teste de uniformidade...")
-    teste_uniformidade = TesteUniformidade(classes=20)
-    teste_uniformidade.exec(numeros_salvos)
+    #print("calculando teste de uniformidade...")
+    #teste_uniformidade = TesteUniformidade(classes=20)
+    #teste_uniformidade.exec(numeros_salvos)
 
-    print("\ncalculando teste de corrida...")
-    teste_corrida = TesteCorrida()
-    teste_corrida.exec(numeros_salvos, tipo="asc")
+    #print("\ncalculando teste de corrida...")
+    #teste_corrida = TesteCorrida()
+    #teste_corrida.exec(numeros_salvos, tipo="asc")
 
     print("\ncalculando teste de intervalo...")
-    #teste_intervalo = TesteIntervalo()
-    #teste_intervalo.exec(numeros_salvos)
+    teste_intervalo = TesteIntervalo()
+    teste_intervalo.exec(numeros_salvos, 5)
 
-    print("\ncalculando teste de permutações...")
-    teste_permutacoes = TestePermutacoes()
-    teste_permutacoes.exec(numeros_salvos)
+    #print("\ncalculando teste de permutações...")
+    #teste_permutacoes = TestePermutacoes()
+    #teste_permutacoes.exec(numeros_salvos)
 
 
 if __name__ == "__main__":

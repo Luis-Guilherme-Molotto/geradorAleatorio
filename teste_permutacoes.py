@@ -45,27 +45,16 @@ class TestePermutacoes(TesteKS):
 
     def exec(self, numeros: List[float], tipo: str = "asc"):
         fo = self._calc_fo(numeros)
-        print(fo)
 
         pi = self._calc_pi(fo)
-        print(pi)
-
 
         gx = self._calc_gx(pi)
-        print(gx)
-
 
         px = self._calc_px(len(fo))
-        print(px)
-
 
         fx = self._calc_fx(px)
-        print(fx)
-
 
         teste = self._calc_teste(fx, gx)
-        print(teste)
-
 
         ks = self._calc_ks(teste)
         ks5 = self._calc_ks5_permutacao(numeros)
