@@ -26,36 +26,50 @@ def cronometrar_tempo() -> None:
 
 def main():
     # testar performance
-    # cronometrar_tempo()
+    cronometrar_tempo()
 
     # gerador 1
-    # gerador_1 = GeradorAleatorio(multiplicador=16807, modulo=((2 ** 31) - 1))
+    gerador_1 = GeradorAleatorio(multiplicador=16807, modulo=((2 ** 31) - 1), incremento=0, semente=2022)
 
     # gerador personalizado
-    gerador_personalizado = GeradorAleatorio(
-        multiplicador=8404997, modulo=((2 ** 61) - 1)
-    )
+    #gerador_personalizado = GeradorAleatorio(
+    #    multiplicador=8404997, modulo=((2 ** 61) - 1)
+    #)
     gerenciador_arquivo = GerenciadorArquivo("GERALEO.txt")
 
-    numeros_aleatorios = gerador_personalizado.exec(tamanho=100)
+    #numeros_aleatorios = gerador_personalizado.exec(tamanho=100)
+    numeros_aleatorios = gerador_1.exec(100)
     gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
     numeros_salvos = gerenciador_arquivo.ler_numeros()
 
-    #print("calculando teste de uniformidade...")
-    #teste_uniformidade = TesteUniformidade(classes=20)
-    #teste_uniformidade.exec(numeros_salvos)
+    print("*** Teste de uniformidade ***")
+    teste_uniformidade = TesteUniformidade(classes=20)
+    teste_uniformidade.exec(numeros_salvos)
 
-    #print("\ncalculando teste de corrida...")
-    #teste_corrida = TesteCorrida()
-    #teste_corrida.exec(numeros_salvos, tipo="asc")
+    print("\n*** Teste da corrida ascendente ***")
+    teste_corrida = TesteCorrida()
+    teste_corrida.exec(numeros_salvos, tipo="asc")
 
-    print("\ncalculando teste de intervalo...")
+    print("\n*** Teste da corrida descendente ***")
+    teste_corrida = TesteCorrida()
+    teste_corrida.exec(numeros_salvos, tipo="desc")
+
+    print("\n*** Teste dos intervalos ***")
     teste_intervalo = TesteIntervalo()
+    teste_intervalo.exec(numeros_salvos, 0)
+    teste_intervalo.exec(numeros_salvos, 1)
+    teste_intervalo.exec(numeros_salvos, 2)
+    teste_intervalo.exec(numeros_salvos, 3)
+    teste_intervalo.exec(numeros_salvos, 4)
     teste_intervalo.exec(numeros_salvos, 5)
+    teste_intervalo.exec(numeros_salvos, 6)
+    teste_intervalo.exec(numeros_salvos, 7)
+    teste_intervalo.exec(numeros_salvos, 8)
+    teste_intervalo.exec(numeros_salvos, 9)
 
-    #print("\ncalculando teste de permutações...")
-    #teste_permutacoes = TestePermutacoes()
-    #teste_permutacoes.exec(numeros_salvos)
+    print("\n*** Teste das permutacoes ***")
+    teste_permutacoes = TestePermutacoes()
+    teste_permutacoes.exec(numeros_salvos)
 
 
 if __name__ == "__main__":

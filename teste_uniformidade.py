@@ -38,6 +38,6 @@ class TesteUniformidade(TesteKS):
         ks = self._calc_ks(teste)
         ks5 = self._calc_ks5(numeros)
 
-        print("Aceita H0" if ks < ks5 else "Rejeita H0")
-        print(ks)
-        print(ks5)
+        print("Aceita H0: Os valores observados tem distribuicao uniforme" if ks < ks5 else "Rejeita H0: Os valores observados nao tem distribuicao uniforme")
+        #print(ks)
+        #print(ks5)
