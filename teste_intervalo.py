@@ -74,5 +74,5 @@ class TesteIntervalo(TesteKS):
         ks5 = self._calc_ks5_intervalo(fo)
 
         print(f"Aceita H0: Os intervalos observados para {d} nao diferem dos esperados" if ks < ks5 else "Rejeita H0: Os intervalos observados para {d} diferem dos esperados")
-        #print(ks)
-        #print(ks5)
+        print(ks)
+        print(ks5)

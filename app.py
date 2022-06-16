@@ -32,13 +32,11 @@ def main():
     gerador_1 = GeradorAleatorio(multiplicador=16807, modulo=((2 ** 31) - 1), incremento=0, semente=2022)
 
     # gerador personalizado
-    #gerador_personalizado = GeradorAleatorio(
-    #    multiplicador=8404997, modulo=((2 ** 61) - 1)
-    #)
+    #gerador_personalizado = GeradorAleatorio(multiplicador=(8 * 5832719) + 3, modulo=((2 ** 61) - 1), incremento=13 ,semente=2019)
     gerenciador_arquivo = GerenciadorArquivo("GERALEO.txt")
 
-    #numeros_aleatorios = gerador_personalizado.exec(tamanho=100)
-    numeros_aleatorios = gerador_1.exec(100)
+    #numeros_aleatorios = gerador_personalizado.exec(60000000)
+    numeros_aleatorios = gerador_1.exec(60000000)
     gerenciador_arquivo.salvar_numeros(numeros_aleatorios)
     numeros_salvos = gerenciador_arquivo.ler_numeros()
 

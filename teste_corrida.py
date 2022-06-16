@@ -80,5 +80,5 @@ class TesteCorrida(TesteKS):
         ks5 = self._calc_ks5(numeros)
 
         print("Aceita H0: As corridas observadas nao diferem das esperadas" if ks < ks5 else "Rejeita H0: As corridas observadas diferem das esperadas")
-        #print(ks)
-        #print(ks5)
+        print(ks)
+        print(ks5)

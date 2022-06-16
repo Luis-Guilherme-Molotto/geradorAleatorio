@@ -60,5 +60,5 @@ class TestePermutacoes(TesteKS):
         ks5 = self._calc_ks5_permutacao(numeros)
 
         print("Aceita H0: Os ordenamentos observados nao diferem dos esperados" if ks < ks5 else "Rejeita H0: Os ordenamentos observados diferem dos esperados")
-        #print(ks)
-        #print(ks5)
+        print(ks)
+        print(ks5)
